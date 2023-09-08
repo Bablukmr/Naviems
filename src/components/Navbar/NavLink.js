@@ -90,6 +90,5 @@ export const links = [
         ],
       },
     ],
-  },
-  { name: 'CAREER' },
+  }
 ];
