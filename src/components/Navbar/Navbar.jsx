@@ -20,22 +20,30 @@ function Navbar() {
               </div>
                 </div>
                 <ul className='md:flex hidden uppercase items-center gap-8 font-[Poppins]'>
+                <NavLinks />
                     <li>
-                        <Link className='py-7 inline-block px-3' href={'/'}>Home</Link>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>About</Link>
                     </li>
-                    <NavLinks />
+                    <li>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>CAREER</Link>
+                    </li>
+                    
                 </ul>
-                <div className='md:block hidden'>
+                <div className=' lg:block hidden'>
                     <Button />
                 </div>
                 {/* Mobive nav */}
                 <ul className={`md:hidden bg-white absolute w-full h-full bottom-0 py-24 pl-4 
                 duration-500 ${open ? 'left-0':'left-[-100%]'}
                 `}>
+                     <NavLinks />
                     <li>
-                        <Link className='py-7 inline-block px-3' href={'/'}>Home</Link>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>About</Link>
                     </li>
-                    <NavLinks />
+                    <li>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>CAREER</Link>
+                    </li>
+                   
                     <div className='py-5'>
                         <Button/>
                     </div>
