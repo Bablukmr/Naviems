@@ -11,11 +11,11 @@ import CloseIcon from '@mui/icons-material/Close';
 function Navbar() {
     const [open,setOpen]=useState(false)
     return (
-        <nav className='bg-white'>
-            <div className='flex items-center font-medium justify-around'>
+        <nav className='bg-white shadow-lg'>
+            <div className='flex items-center font-medium justify-around '>
                 <div className='z-50 p-2 md:w-auto w-full flex justify-between'>
                     <Link href={'/'}><Image src={logo} width={180} alt='logo' className='md:cursor-pointer h-14' /></Link>
-              <div className='p-4 md:hidden' onClick={()=>setOpen(!open)}>
+              <div className='p-1.5 bg-slate-300 m-3 rounded-md border-neutral-950 border-1 md:hidden' onClick={()=>setOpen(!open)}>
               { open?<CloseIcon/>:<MenuIcon/>}
               </div>
                 </div>
