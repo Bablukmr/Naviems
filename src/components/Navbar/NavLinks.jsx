@@ -12,7 +12,7 @@ export default function NavLinks() {
     <>
       {links.map((link, index) => (
         <div key={index}>
-          <div className="px-3 text-left md:cursor-pointer group">
+          <div className="px-3 text-left group">
             <h1
               className="py-7 flex justify-between hover:text-blue-600 items-center md:pr-0 pr-5 group"
               onClick={() => {
@@ -29,10 +29,7 @@ export default function NavLinks() {
                 )}
               </span>
               <span className="md:block  hidden group-hover:rotate-180 ">
-                
-              <KeyboardArrowDownIcon />
-                
-              
+                <KeyboardArrowDownIcon />
               </span>
             </h1>
             {link.submenu && (
@@ -41,23 +38,25 @@ export default function NavLinks() {
                   <div className="py-1.5">
                     <div className="w-4 h-4 bg-white absolute rotate-45"></div>
                   </div>
-                  <div className="bg-white ml-[-1rem] w-full p-4 flex gap-5 flex-wrap rounded-sm drop-shadow-2xl">
+                  <div className="bg-white ml-[-1rem] w-full p-4  gap-5 rounded-sm drop-shadow-2xl">
                     {link.sublinks.map((item, id) => (
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
-                        {item.sublink.map((slink, sid) => (
-                          <li
-                            className="text-sm text-gray-600 my-2.5"
-                            key={sid}
-                          >
-                            <Link
-                              href={slink.link}
-                              className="hover:text-[#4A3AFF] hover:border-b-2"
+                        <ul className="grid mt-4 grid-cols-3 gap-5">
+                          {item.sublink.map((slink, sid) => (
+                            <li
+                              key={sid}
+                              className="text-sm text-gray-600 my-2.5 grid min-w-[130px]"
                             >
-                              {slink.name}
-                            </Link>
-                          </li>
-                        ))}
+                              <Link
+                                href={slink.link}
+                                className="hover:text-[#4A3AFF] hover:border-b-2"
+                              >
+                                {slink.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
                   </div>
@@ -66,7 +65,7 @@ export default function NavLinks() {
             )}
           </div>
           {/* Mobile submenu */}
-          <div className={`${heading === link.name ? "md:hidden" : "hidden"}`}>
+          <div className={`${heading === link.name ? "md:hidden" : "hidden"} `}>
             {link.sublinks?.map((slinks, id) => (
               <div key={id}>
                 <div>
@@ -80,12 +79,12 @@ export default function NavLinks() {
                   >
                     {slinks.Head}
                     <span className="">
-                {subHeading=== slinks.Head ? (
-                  <KeyboardArrowUpIcon />
-                ) : (
-                  <KeyboardArrowDownIcon />
-                )}
-              </span>
+                      {subHeading === slinks.Head ? (
+                        <KeyboardArrowUpIcon />
+                      ) : (
+                        <KeyboardArrowDownIcon />
+                      )}
+                    </span>
                   </h1>
                   <div
                     className={`${
