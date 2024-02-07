@@ -11,9 +11,9 @@ import CloseIcon from '@mui/icons-material/Close';
 function Navbar() {
     const [open,setOpen]=useState(false)
     return (
-        <nav className='bg-white shadow-lg fixed top-0 w-full'>
-            <div className='flex items-center font-semibold md:mx-10 text-base justify-between'>
-                <div className='z-50 p-2 md:w-[15%] w-full flex justify-between'>
+        <nav className='bg-white shadow-lg fixed z-40 top-0 w-full'>
+            <div className='flex  z-50 items-center font-semibold md:mx-10 text-base justify-between'>
+                <div className='z-50 bg-white p-2 md:w-[15%] w-full flex justify-between'>
                     <Link href={'/'}><Image src={logo} width={180} alt='logo' className='md:cursor-pointer h-14' /></Link>
               <div className='p-1.5 bg-slate-300 m-3 rounded-md border-neutral-950 border-1 md:hidden' onClick={()=>setOpen(!open)}>
                      { open?<CloseIcon/>:<MenuIcon/>}
@@ -22,7 +22,7 @@ function Navbar() {
                 <ul className='md:flex w-[90%] hidden uppercase justify-end items-center  font-[Montserrat]'>
                 
                     <li>
-                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>About</Link>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/about'}>About</Link>
                     </li>
                     <NavLinks />
                     <li>
@@ -38,29 +38,29 @@ function Navbar() {
                 {/* <div className=' lg:block hidden'>
                     <Button />
                 </div> */}
-               
+              
             </div>
-
-             {/* Mobive nav */}
-             <ul className={`md:hidden bg-white absolute w-full h-full bottom-0 pt-40 pl-4 
-                duration-500 ${open ? 'left-0':'left-[-100%]'}
+  {/* Mobive nav */}
+  <ul className={`md:hidden z-30 bg-white fixed w-full overflow-scroll h-full bottom-0 pt-14 pl-4 
+                duration-500 ${open ? 'left-0':'left-[-100%] '}
                 `}>
                     
                     <li>
-                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>About</Link>
+                        <Link onClick={()=>setOpen(!open)} className='py-7 inline-block px-3 hover:text-blue-600' href={'/about'}>About</Link>
                     </li>
                     <NavLinks />
                     <li>
-                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Cogen</Link>
+                        <Link onClick={()=>setOpen(!open)} className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Cogen</Link>
                     </li>
                     <li>
-                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Contact</Link>
+                        <Link onClick={()=>setOpen(!open)} className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Contact</Link>
                     </li>
                    
                     {/* <div className='py-5'>
                         <Button/>
                     </div> */}
                 </ul>
+            
         </nav>
     )
 }

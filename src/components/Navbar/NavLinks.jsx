@@ -38,15 +38,15 @@ export default function NavLinks() {
                   <div className="py-1.5">
                     <div className="w-4 h-4 bg-white absolute rotate-45"></div>
                   </div>
-                  <div className="bg-white ml-[-1rem] w-full p-4  gap-5 rounded-sm drop-shadow-2xl">
+                  <div className="bg-white ml-[-1rem] w-full p-2 gap-5 rounded-sm drop-shadow-2xl">
                     {link.sublinks.map((item, id) => (
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
-                        <ul className="grid mt-4 grid-cols-3 gap-5">
+                        <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
                           {item.sublink.map((slink, sid) => (
                             <li
                               key={sid}
-                              className="text-sm text-gray-600 my-2.5 grid min-w-[130px]"
+                              className="text-sm text-gray-600 my-1 grid min-w-[130px]"
                             >
                               <Link
                                 href={slink.link}
@@ -57,6 +57,19 @@ export default function NavLinks() {
                             </li>
                           ))}
                         </ul>
+                        {item.Headmore
+                          ? item.Headmore.map((a, b) => (
+                              <Link
+                                key={b}
+                                href={a.link}
+                                className="hover:text-[#4A3AFF]"
+                              >
+                                <h1 className="text-lg font-semibold">
+                                  {a.name}
+                                </h1>
+                              </Link>
+                            ))
+                          : ""}
                       </div>
                     ))}
                   </div>
