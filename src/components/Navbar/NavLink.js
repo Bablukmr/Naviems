@@ -6,9 +6,9 @@ export const links = [
       {
         Head: "Compliance",
         sublink: [
-          { name: "Apr 21 to Sep 21", link: "/compliance1.html" },
-          { name: "Apr 22 to Sep 22", link: "/compliance2.html" },
-          { name: "Oct 22 to Mar 23", link: "/compliance3.html" },
+          { name: "Apr 21 to Sep 21", link: "/" },
+          { name: "Apr 22 to Sep 22", link: "/" },
+          { name: "Oct 22 to Mar 23", link: "/" },
           { name: "Annexure 1", link: "/" },
           { name: "Annexure 2", link: "/" },
           { name: "Annexure 3", link: "/" },
@@ -28,7 +28,7 @@ export const links = [
     ],
   },
   {
-    name: "PRODUCTS",
+    name: "Distillery",
     submenu: true,
     sublinks: [
       {

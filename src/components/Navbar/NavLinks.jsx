@@ -14,7 +14,7 @@ export default function NavLinks() {
         <div key={index}>
           <div className="px-3 text-left group">
             <h1
-              className="py-7 flex justify-between hover:text-blue-600 items-center md:pr-0 pr-5 group"
+              className="py-7 flex justify-between cursor-pointer hover:text-blue-600 items-center md:pr-0 pr-5 group"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -50,7 +50,7 @@ export default function NavLinks() {
                             >
                               <Link
                                 href={slink.link}
-                                className="hover:text-[#4A3AFF] hover:border-b-2"
+                                className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
                               >
                                 {slink.name}
                               </Link>
