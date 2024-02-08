@@ -1,15 +1,110 @@
+"use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import { links } from "./NavLink";
+import React, { useEffect, useState } from "react";
+// import { links } from "./NavLink";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { apiData } from "../api";
 
 export default function NavLinks() {
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
+  const [apival, setApiVal] = useState([]);
+  const [sugarHeader, setSugarHeader] = useState([]);
+  const [distilleryHeader, setDistilleryHeader] = useState([]);
 
+  console.log(apival);
+  console.log(sugarHeader);
+
+  useEffect(async () => {
+    let apival = await apiData();
+    setApiVal(apival);
+    const sugarHeaders = apival.filter((item) => item.header === "Suger");
+    // .map(item => item.header);
+    const distilleryHeaders = apival.filter(
+      (item) => item.header === "Distillery"
+    );
+    // .map(item => item.header);
+    setSugarHeader(sugarHeaders);
+    setDistilleryHeader(distilleryHeaders);
+  }, []);
+
+  const links = [
+    {
+      name: "Sugar",
+      submenu: true,
+      sublinks: [
+        {
+          Head: "Compliance",
+          sublink:
+            // subHeading
+
+            [
+              { name: "Apr 21 to Sep 21", link: "/sugerCompliance" },
+              { name: "Apr 22 to Sep 22", link: "/sugerCompliance" },
+              { name: "Oct 22 to Mar 23", link: "/sugerCompliance" },
+              { name: "Annexure 1", link: "/" },
+              { name: "Annexure 2", link: "/" },
+              { name: "Annexure 3", link: "/" },
+              { name: "Annexure 4", link: "/" },
+              { name: "Annexure 5", link: "/" },
+              { name: "Annexure 6", link: "/" },
+              { name: "Annexure 7", link: "/" },
+              { name: "Annexure 8", link: "/" },
+              { name: "Annexure 9", link: "/" },
+              { name: "Annexure 10", link: "/" },
+              { name: "Annexure 11", link: "/" },
+              { name: "Annexure 12", link: "/" },
+              { name: "Annexure 13", link: "/" },
+              { name: "River Report", link: "/" },
+            ],
+        },
+      ],
+    },
+    {
+      name: "Distillery",
+      submenu: true,
+      sublinks: [
+        {
+          Head: "Compliance",
+          Headmore: [
+            { name: "Production", link: "/" },
+            { name: "Analysis", link: "/" },
+            { name: "Environmental Clearance (EC) ", link: "/" },
+          ],
+          sublink: [
+            { name: "Apr 21 to Sep 21", link: "/" },
+            { name: "Apr 22 to Sep 22", link: "/" },
+            { name: "Oct 22 to Mar 23", link: "/" },
+            { name: "Annexure 1", link: "/" },
+            { name: "Annexure 2", link: "/" },
+            { name: "Annexure 3", link: "/" },
+            { name: "Annexure 4", link: "/" },
+            { name: "Annexure 5", link: "/" },
+            { name: "Annexure 6", link: "/" },
+            { name: "Annexure 7", link: "/" },
+            { name: "Annexure 8", link: "/" },
+            { name: "Annexure 9", link: "/" },
+            { name: "Annexure 10", link: "/" },
+            { name: "Annexure 11", link: "/" },
+            { name: "Annexure 12", link: "/" },
+            { name: "Annexure 13", link: "/" },
+            { name: "River Report", link: "/" },
+          ],
+        },
+      ],
+    },
+  ];
+  // console.log(links[0].name);
   return (
     <>
+      <div>
+        {/* {
+          sugarHeader.map((a,b)=>(
+            <h1 key={b}>{a.title} </h1>
+          ))
+        } */}
+      </div>
       {links.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left group">
@@ -43,20 +138,35 @@ export default function NavLinks() {
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
                         <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
-                          {item.sublink.map((slink, sid) => (
-                            <li
-                              key={sid}
-                              className="text-sm text-gray-600 my-1 grid min-w-[130px]"
-                            >
-                              <Link
-                                href={slink.link}
-                                className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
-                              >
-                                {slink.name}
-                              </Link>
-                            </li>
-                          ))}
+                          {links[0].name === "Sugar"
+                            ? sugarHeader.map((a, b) => (
+                                <li
+                                  key={b}
+                                  className="text-sm text-gray-600 my-1 grid min-w-[130px]"
+                                >
+                                  <Link
+                                    href={a.file.split(".")[0]}
+                                    className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
+                                  >
+                                    {a.title}
+                                  </Link>
+                                </li>
+                              ))
+                            : distilleryHeader.map((a, b) => (
+                                <li
+                                  key={b}
+                                  className="text-sm text-gray-600 my-1 grid min-w-[130px]"
+                                >
+                                  <Link
+                                    href={a.file.split(".")[0]}
+                                    className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
+                                  >
+                                    {a.title}
+                                  </Link>
+                                </li>
+                              ))}
                         </ul>
+
                         {item.Headmore
                           ? item.Headmore.map((a, b) => (
                               <Link

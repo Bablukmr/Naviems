@@ -1,3 +1,4 @@
+
 export const links = [
   {
     name: "Sugar",
@@ -32,7 +33,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Web Hosting",
+        Head: "Compliance",
         Headmore: [
           { name: "Production", link: "/" },
           { name: "Analysis", link: "/" },
