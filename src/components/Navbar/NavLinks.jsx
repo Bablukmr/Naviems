@@ -66,7 +66,7 @@ export default function NavLinks() {
       submenu: true,
       sublinks: [
         {
-          Head: "Compliance",
+          Head: "Compliances",
           Headmore: [
             { name: "Production", link: "/" },
             { name: "Analysis", link: "/" },
@@ -98,13 +98,7 @@ export default function NavLinks() {
   // console.log(links[0].name);
   return (
     <>
-      <div>
-        {/* {
-          sugarHeader.map((a,b)=>(
-            <h1 key={b}>{a.title} </h1>
-          ))
-        } */}
-      </div>
+      <div></div>
       {links.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left group">
@@ -137,8 +131,9 @@ export default function NavLinks() {
                     {link.sublinks.map((item, id) => (
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
+                        {/* {item.Head === "Compliance" && ( */}
                         <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
-                          {links[0].name === "Sugar"
+                          {item.Head === "Compliance"
                             ? sugarHeader.map((a, b) => (
                                 <li
                                   key={b}
@@ -166,6 +161,7 @@ export default function NavLinks() {
                                 </li>
                               ))}
                         </ul>
+
 
                         {item.Headmore
                           ? item.Headmore.map((a, b) => (
