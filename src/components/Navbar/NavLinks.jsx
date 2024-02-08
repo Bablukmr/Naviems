@@ -1,7 +1,6 @@
-"use client";
+"use client"
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-// import { links } from "./NavLink";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { apiData } from "../api";
@@ -12,9 +11,6 @@ export default function NavLinks() {
   const [apival, setApiVal] = useState([]);
   const [sugarHeader, setSugarHeader] = useState([]);
   const [distilleryHeader, setDistilleryHeader] = useState([]);
-
-  console.log(apival);
-  console.log(sugarHeader);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +27,7 @@ export default function NavLinks() {
     };
     fetchData();
   }, []);
-// const header =new name 
+
   const links = [
     {
       name: "Sugar",
@@ -39,28 +35,7 @@ export default function NavLinks() {
       sublinks: [
         {
           Head: "Compliance",
-          sublink:
-            // subHeading
-
-            [
-              { name: "Apr 21 to Sep 21", link: "/sugerCompliance" },
-              { name: "Apr 22 to Sep 22", link: "/sugerCompliance" },
-              { name: "Oct 22 to Mar 23", link: "/sugerCompliance" },
-              { name: "Annexure 1", link: "/" },
-              { name: "Annexure 2", link: "/" },
-              { name: "Annexure 3", link: "/" },
-              { name: "Annexure 4", link: "/" },
-              { name: "Annexure 5", link: "/" },
-              { name: "Annexure 6", link: "/" },
-              { name: "Annexure 7", link: "/" },
-              { name: "Annexure 8", link: "/" },
-              { name: "Annexure 9", link: "/" },
-              { name: "Annexure 10", link: "/" },
-              { name: "Annexure 11", link: "/" },
-              { name: "Annexure 12", link: "/" },
-              { name: "Annexure 13", link: "/" },
-              { name: "River Report", link: "/" },
-            ],
+          sublink: sugarHeader,
         },
       ],
     },
@@ -69,36 +44,13 @@ export default function NavLinks() {
       submenu: true,
       sublinks: [
         {
-          Head: "Compliances",
-          Headmore: [
-            { name: "Production", link: "/" },
-            { name: "Analysis", link: "/" },
-            { name: "Environmental Clearance (EC) ", link: "/" },
-          ],
-          sublink: [
-            { name: "Apr 21 to Sep 21", link: "/" },
-            { name: "Apr 22 to Sep 22", link: "/" },
-            { name: "Oct 22 to Mar 23", link: "/" },
-            { name: "Annexure 1", link: "/" },
-            { name: "Annexure 2", link: "/" },
-            { name: "Annexure 3", link: "/" },
-            { name: "Annexure 4", link: "/" },
-            { name: "Annexure 5", link: "/" },
-            { name: "Annexure 6", link: "/" },
-            { name: "Annexure 7", link: "/" },
-            { name: "Annexure 8", link: "/" },
-            { name: "Annexure 9", link: "/" },
-            { name: "Annexure 10", link: "/" },
-            { name: "Annexure 11", link: "/" },
-            { name: "Annexure 12", link: "/" },
-            { name: "Annexure 13", link: "/" },
-            { name: "River Report", link: "/" },
-          ],
+          Head: "Compliance",
+          sublink: distilleryHeader,
         },
       ],
     },
   ];
-  // console.log(links[0].name);
+
   return (
     <>
       <div></div>
@@ -134,51 +86,21 @@ export default function NavLinks() {
                     {link.sublinks.map((item, id) => (
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
-                        {/* {item.Head === "Compliance" && ( */}
                         <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
-                          {item.Head === "Compliance"
-                            ? sugarHeader.map((a, b) => (
-                                <li
-                                  key={b}
-                                  className="text-sm text-gray-600 my-1 grid min-w-[130px]"
-                                >
-                                  <Link
-                                    href={a._id}
-                                    className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
-                                  >
-                                    {a.title}
-                                  </Link>
-                                </li>
-                              ))
-                            : distilleryHeader.map((a, b) => (
-                                <li
-                                  key={b}
-                                  className="text-sm text-gray-600 my-1 grid min-w-[130px]"
-                                >
-                                  <Link
-                                    href={a._id}
-                                    className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
-                                  >
-                                    {a.title}
-                                  </Link>
-                                </li>
-                              ))}
-                        </ul>
-
-
-                        {item.Headmore
-                          ? item.Headmore.map((a, b) => (
+                          {item.sublink.map((a, b) => (
+                            <li
+                              key={b}
+                              className="text-sm text-gray-600 my-1 grid min-w-[130px]"
+                            >
                               <Link
-                                key={b}
-                                href={a.link}
-                                className="hover:text-[#4A3AFF]"
+                                href={a._id}
+                                className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
                               >
-                                <h1 className="text-lg font-semibold">
-                                  {a.name}
-                                </h1>
+                                {a.title}
                               </Link>
-                            ))
-                          : ""}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
                   </div>
@@ -213,11 +135,13 @@ export default function NavLinks() {
                       subHeading === slinks.Head ? "md:hidden" : "hidden"
                     }`}
                   >
-                    {slinks.sublink.map((slink, sid) => (
-                      <li className="py-3 pl-14" key={sid}>
-                        <Link href={slink.link}>{slink.name}</Link>
-                      </li>
-                    ))}
+                    <ul>
+                      {slinks.sublink.map((slink, sid) => (
+                        <li className="py-3 pl-14" key={sid}>
+                          <Link href={slink._id}>{slink.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
