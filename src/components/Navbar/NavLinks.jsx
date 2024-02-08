@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -18,11 +18,13 @@ export default function NavLinks() {
         const data = await apiData();
         setApiVal(data);
         const sugarHeaders = data.filter((item) => item.header === "Suger");
-        const distilleryHeaders = data.filter((item) => item.header === "Distillery");
+        const distilleryHeaders = data.filter(
+          (item) => item.header === "Distillery"
+        );
         setSugarHeader(sugarHeaders);
         setDistilleryHeader(distilleryHeaders);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
@@ -46,8 +48,17 @@ export default function NavLinks() {
         {
           Head: "Compliance",
           sublink: distilleryHeader,
+          moreHead: [
+            { name: "Production", link: "/" },
+            { name: "Analysis", link: "/" },
+          ],
         },
       ],
+      // Headmore: [
+      //   { name: "Production", link: "/" },
+      //   { name: "Analysis", link: "/" },
+      //   { name: "Environmental Clearance (EC) ", link: "/" },
+      // ],
     },
   ];
 
@@ -101,6 +112,17 @@ export default function NavLinks() {
                             </li>
                           ))}
                         </ul>
+                        {item.moreHead &&
+                          item.moreHead.map((d, a) => (
+                            <ul key={a} className="flex flex-col gap-y-3">
+                              <Link
+                                href={d.link}
+                                className="text-lg font-semibold hover:text-[#4A3AFF]"
+                              >
+                                {d.name}
+                              </Link>
+                            </ul>
+                          ))}
                       </div>
                     ))}
                   </div>
@@ -142,6 +164,7 @@ export default function NavLinks() {
                         </li>
                       ))}
                     </ul>
+                    
                   </div>
                 </div>
               </div>
