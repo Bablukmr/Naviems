@@ -28,7 +28,7 @@ export default function NavLinks() {
     setSugarHeader(sugarHeaders);
     setDistilleryHeader(distilleryHeaders);
   }, []);
-
+// const header =new name 
   const links = [
     {
       name: "Sugar",
