@@ -16,17 +16,20 @@ export default function NavLinks() {
   console.log(apival);
   console.log(sugarHeader);
 
-  useEffect(async () => {
-    let apival = await apiData();
-    setApiVal(apival);
-    const sugarHeaders = apival.filter((item) => item.header === "Suger");
-    // .map(item => item.header);
-    const distilleryHeaders = apival.filter(
-      (item) => item.header === "Distillery"
-    );
-    // .map(item => item.header);
-    setSugarHeader(sugarHeaders);
-    setDistilleryHeader(distilleryHeaders);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await apiData();
+        setApiVal(data);
+        const sugarHeaders = data.filter((item) => item.header === "Suger");
+        const distilleryHeaders = data.filter((item) => item.header === "Distillery");
+        setSugarHeader(sugarHeaders);
+        setDistilleryHeader(distilleryHeaders);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
   }, []);
 // const header =new name 
   const links = [
@@ -140,7 +143,7 @@ export default function NavLinks() {
                                   className="text-sm text-gray-600 my-1 grid min-w-[130px]"
                                 >
                                   <Link
-                                    href={a.file.split(".")[0]}
+                                    href={a._id}
                                     className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
                                   >
                                     {a.title}
@@ -153,7 +156,7 @@ export default function NavLinks() {
                                   className="text-sm text-gray-600 my-1 grid min-w-[130px]"
                                 >
                                   <Link
-                                    href={a.file.split(".")[0]}
+                                    href={a._id}
                                     className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
                                   >
                                     {a.title}
