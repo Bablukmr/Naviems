@@ -38,8 +38,8 @@ function Compliance({ params }) {
     }
   }, [apival, ids]);
   // const aaa={`http://localhost:5000/files/${pdfUrl}`}
-  const nnurll = "http://localhost:5000/files/" + pdfUrl;
-  console.log("http://localhost:5000/files/" + pdfUrl);
+  const nnurll = "https://harinagr.onrender.com/files/" + pdfUrl;
+  console.log("https://harinagr.onrender.com/files/" + pdfUrl);
   return (
     <div className="mt-[100px]">
       <div className="w-full mt-4 px-4 py-8 mx-auto bg-white rounded-lg shadow-lg md:px-8">
