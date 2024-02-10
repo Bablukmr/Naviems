@@ -4,7 +4,7 @@ import React from "react";
 function AboutPage() {
   return (
     <div className="mt-[80px]">
-      <div className="w-full mt-4 px-4 py-8 mx-auto bg-white rounded-lg shadow-lg md:px-8">
+      <div className="w-full mt-4 px-4 py-8 mx-auto bg-white rounded-lg  md:px-8">
         <h1 className="mb-4 text-3xl font-semibold text-center">
           About Harinagar Sugar Mills Ltd.
         </h1>
@@ -53,7 +53,7 @@ function AboutPage() {
         </div>
       </div>
       <div className="w-full mx-auto px-4">
-        <h1 className="text-3xl font-semibold my-4">Emission Consent Order</h1>
+        <h1 className="text-3xl font-semibold my-4 ml-4">Emission Consent Order</h1>
 
         <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
           <p className="mb-4">
@@ -65,7 +65,6 @@ function AboutPage() {
             additional pollution beyond the levels initially agreed upon or
             proposed.
           </p>
-
           <p className="mb-4">
             Any alterations, additions, deletions, or modifications to the plant
             must receive prior clearance from the Bihar State Pollution Control

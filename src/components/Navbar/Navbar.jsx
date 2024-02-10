@@ -26,7 +26,7 @@ function Navbar() {
                     </li>
                     <NavLinks />
                     <li>
-                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Cogen</Link>
+                        <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/cogen'}>Cogen</Link>
                     </li>
                     <li>
                         <Link className='py-7 inline-block px-3 hover:text-blue-600' href={'/'}>Fertilizer Lab</Link>

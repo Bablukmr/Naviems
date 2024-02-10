@@ -54,17 +54,12 @@ export default function NavLinks() {
           ],
         },
       ],
-      // Headmore: [
-      //   { name: "Production", link: "/" },
-      //   { name: "Analysis", link: "/" },
-      //   { name: "Environmental Clearance (EC) ", link: "/" },
-      // ],
     },
   ];
 
   return (
     <>
-      <div></div>
+
       {links.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left group">
@@ -164,7 +159,6 @@ export default function NavLinks() {
                         </li>
                       ))}
                     </ul>
-                    
                   </div>
                 </div>
               </div>
