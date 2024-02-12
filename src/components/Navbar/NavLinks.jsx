@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { apiData } from "../api";
+import Loading from "../loading";
 
 export default function NavLinks() {
   const [heading, setHeading] = useState("");
@@ -59,7 +60,6 @@ export default function NavLinks() {
 
   return (
     <>
-
       {links.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left group">
@@ -82,6 +82,7 @@ export default function NavLinks() {
                 <KeyboardArrowDownIcon />
               </span>
             </h1>
+
             {link.submenu && (
               <div>
                 <div className="absolute top-20 hidden group-hover:md:block hover:md:block">
@@ -93,19 +94,26 @@ export default function NavLinks() {
                       <div className="p-3.5" key={id}>
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
                         <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
-                          {item.sublink.map((a, b) => (
-                            <li
-                              key={b}
-                              className="text-sm text-gray-600 my-1 grid min-w-[130px]"
-                            >
-                              <Link
-                                href={a._id}
-                                className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
+                          {apival.length === 0 ? (
+                            <div className="w-[400px]">
+
+                              <Loading />
+                            </div>
+                          ) : (
+                            item.sublink.map((a, b) => (
+                              <li
+                                key={b}
+                                className="text-sm text-gray-600 my-1 grid min-w-[130px]"
                               >
-                                {a.title}
-                              </Link>
-                            </li>
-                          ))}
+                                <Link
+                                  href={a._id}
+                                  className="hover:text-[#4A3AFF] hover:border-b-2 text-center"
+                                >
+                                  {a.title}
+                                </Link>
+                              </li>
+                            ))
+                          )}
                         </ul>
                         {item.moreHead &&
                           item.moreHead.map((d, a) => (
