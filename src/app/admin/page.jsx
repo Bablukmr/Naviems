@@ -20,7 +20,6 @@ function Admin() {
   const [file, setFile] = useState(null);
   const [errors, setErrors] = useState({});
 
-
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -49,12 +48,17 @@ function Admin() {
         formData.append("title", title);
         formData.append("file", file);
 
-        console.log(header,title,file);
+        console.log(header, title, file);
 
-        const response = await axios.post("https://harinagr.onrender.com/upload-files", formData,{
-          headers:{"Content-Type":"multipart/form-data"}
-        });
-        
+        const response = await axios.post(
+          // "http://localhost:5000/upload-files",
+          "https://harinagr.onrender.com/upload-files",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+
         console.log("API response:", response.data);
 
         setHeader("");
@@ -68,12 +72,19 @@ function Admin() {
       }
     }
   };
-
+  const [erremail, setErremail] = useState(false);
+  const [errpass, setErrpass] = useState(false);
   const handleLogin = (e) => {
     e.preventDefault();
 
     if (email === "11" && password === "11") {
       setIsLoggedIn(true);
+      if (email != "11") {
+        setErremail(true);
+      }
+      if (password != "11") {
+        setErrpass(true);
+      }
     } else {
       alert("Invalid email or password");
     }
@@ -93,6 +104,7 @@ function Admin() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {erremail ? <p className="text-red-600">Error in Email</p> : ""}
           <TextField
             id="Password"
             label="Password"
@@ -102,6 +114,7 @@ function Admin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {errpass ? <p className="text-red-600">Error in Password</p> : ""}
           <Button
             onClick={handleLogin}
             variant="contained"
@@ -128,7 +141,7 @@ function Admin() {
             // id="demo-simple-select"
             value={header}
             label="Header Types"
-            onChange={(e)=>setHeader(e.target.value)}
+            onChange={(e) => setHeader(e.target.value)}
             error={!!errors.header}
           >
             <MenuItem value="">Select Header</MenuItem>
@@ -146,7 +159,7 @@ function Admin() {
           variant="outlined"
           className="w-[300px]"
           value={title}
-          onChange={(e)=>setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           error={!!errors.title}
         />
         {errors.title && <span className="text-red-500">{errors.title}</span>}
