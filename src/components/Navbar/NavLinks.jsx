@@ -95,7 +95,7 @@ export default function NavLinks() {
                         <h1 className="text-lg font-semibold ">{item.Head}</h1>
                         <ul className="grid mt-2 grid-cols-3 gap-3 drop-shadow-2xl overflow-y-scroll p-4 max-h-[540px] scrollbar-hide">
                           {apival.length === 0 ? (
-                            <div className="w-[400px]">
+                            <div className="w-[300px]">
 
                               <Loading />
                             </div>
